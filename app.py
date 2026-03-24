@@ -5,8 +5,8 @@ import numpy as np
 import os
 import random
 
-# Load model
-model = tf.keras.models.load_model("plant_model.h5")
+# ✅ FIX: load model safely
+model = tf.keras.models.load_model("plant_model.h5", compile=False)
 
 class_names = [
     "Tomato_Early_blight",
@@ -38,7 +38,7 @@ uploaded_file = None
 if option == "Upload Image":
     uploaded_file = st.file_uploader("📤 Upload Leaf Image", type=["jpg","png","jpeg"])
 
-# ✅ FIXED Random option (no repeat + always update)
+# ✅ Random option (fixed)
 elif option == "Random Sample":
     sample_folder = "sample_images"
     files = os.listdir(sample_folder)
@@ -85,7 +85,7 @@ if uploaded_file:
         if conf > 0.8:
             st.balloons()
 
-# ✅ Clean Footer (perfect spacing, no extra gap)
+# Footer
 st.markdown(
     "<div style='margin-top: 40px; text-align:center; color:gray;'>"
     "<p style='font-size:14px;'>"
