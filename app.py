@@ -6,7 +6,7 @@ import os
 import random
 
 # ✅ FIX: load model safely
-model = tf.keras.models.load_model("plant_model.h5", compile=False)
+model = tf.keras.models.load_model("new_model.keras")
 
 class_names = [
     "Tomato_Early_blight",
